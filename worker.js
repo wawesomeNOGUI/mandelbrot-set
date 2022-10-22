@@ -33,9 +33,16 @@ const relativePoint = (x, y) => {
 }
 
 const mandelbrot = (c) => {
-    /*
-    let z = { x: 0, y: 0 }, n = 0, p, d;
+    var totalX = 0;
+    var totalY = 0;
+    var avgX = 0;
+    var avgY = 0;
+    let z = { x: 0, y: 0 }, n = 0, p, tempZ, d;
     do {
+        tempZ = {
+            x: z.x,
+            y: z.y
+        }
         p = {
             x: Math.pow(z.x, 2) - Math.pow(z.y, 2),
             y: 2 * z.x * z.y
@@ -44,12 +51,21 @@ const mandelbrot = (c) => {
             x: p.x + c.x,
             y: p.y + c.y
         }
+        
+        totalX += z.x;
+        avgX = totalX / n;
+        totalY += z.y;
+        avgY = totalY / n;
+        
+        var jump = (avgX-z.x)*(avgX-z.x) + (avgY-z.y)*(avgY-z.y) > 1/3 * (tempZ.x-avgX)*(tempZ.x-avgX) + (tempZ.y-avgY)*(tempZ.y-avgY);
+        
         d = 0.5 * (Math.pow(z.x, 2) + Math.pow(z.y, 2))
         n += 1
     } while (d <= 2 && n < MAX_ITERATION)
 
     return [n, d <= 2]
-    */
+    
+    /*
     var totalX = 0;
     var totalY = 0;
     var avgX = 0;
@@ -82,4 +98,5 @@ const mandelbrot = (c) => {
     } while (d <= 2 && n < MAX_ITERATION && jump)
 
     return [n, d <= 2]
+    */
 }
