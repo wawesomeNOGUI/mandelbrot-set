@@ -1,5 +1,5 @@
 let WIDTH, HEIGHT, REAL_SET, IMAGINARY_SET, END_START_RL, END_START_IM
-const MAX_ITERATION = 1000
+const MAX_ITERATION = 2000
 
 onmessage = (e) => {
     const { isSettingUp } = e.data
