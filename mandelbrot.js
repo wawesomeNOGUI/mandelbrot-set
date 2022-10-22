@@ -13,8 +13,8 @@ ctx.canvas.height = HEIGHT
 
 let worker
 let colorPalette = []
-let REAL_SET = { start: -2, end: 2 }
-let IMAGINARY_SET = { start: -1.5, end: 1.5 }
+let REAL_SET = { start: -2, end: 1 }
+let IMAGINARY_SET = { start: -1, end: 1 }
 const ZOOM_FACTOR = 0.1
 const TASKS = []
 
