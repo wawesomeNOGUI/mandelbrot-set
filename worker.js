@@ -55,23 +55,27 @@ const mandelbrot = (c) => {
     var avgX = 0;
     var avgY = 0;
     
-    let z = { x: 0, y: 0 }, n = 0, p, d;
+    let z = { x: 0, y: 0 }, n = 0, p, tempZ, d;
     do {
+        tempZ = {
+            x: z.x,
+            y: z.y
+        }
         p = {
             x: Math.pow(z.x, 3) - 3 * z.x * Math.pow(z.y, 2),
             y: 3 * Math.pow(z.x, 2) * z.y - Math.pow(z.y, 3)
-        }
+        }        
         z = {
             x: p.x + c.x,
             y: p.y + c.y
-        }
+        }       
         
         totalX += z.x;
         avgX = totalX / n;
         totalY += z.y;
         avgY = totalY / n;
         
-        var jump = (avgX-z.x)*(avgX-z.x) + (avgY-z.y)*(avgY-z.y) < 1/3 * (p.x-avgX)*(p.x-avgX) + (p.y-avgY)*(p.y-avgY);
+        var jump = (avgX-z.x)*(avgX-z.x) + (avgY-z.y)*(avgY-z.y) < 1/3 * (tempZ.x-avgX)*(tempZ.x-avgX) + (tempZ.y-avgY)*(tempZ.y-avgY);
         
         d = 0.5 * (Math.pow(z.x, 2) + Math.pow(z.y, 2))
         n += 1
