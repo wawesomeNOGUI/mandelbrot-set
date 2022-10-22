@@ -71,13 +71,11 @@ const mandelbrot = (c) => {
         totalY += z.y;
         avgY = totalY / n;
         
-        var closeX = z.x / avgX;
-        var closeY = z.y / avgY;
-        var distance = Math.sqrt(closeY *closeY + closeX*closeX);
+        var jump = (avgX-z.x)*(avgX-z.x) + (avgY-z.y)*(avgY-z.y) < 1/3 * (p.x-avgX)*(p.x-avgX) + (p.y-avgY)*(p.y-avgY);
         
         d = 0.5 * (Math.pow(z.x, 2) + Math.pow(z.y, 2))
         n += 1
-    } while (d <= 2 && n < MAX_ITERATION && distance > 0.5 )
+    } while (d <= 2 && n < MAX_ITERATION && jump)
 
     return [n, d <= 2]
 }
