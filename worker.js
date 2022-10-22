@@ -77,7 +77,7 @@ const mandelbrot = (c) => {
         
         d = 0.5 * (Math.pow(z.x, 2) + Math.pow(z.y, 2))
         n += 1
-    } while (d <= 2 && n < MAX_ITERATION && distance > 0.1 )
+    } while (d <= 2 && n < MAX_ITERATION && distance > 0.5 )
 
     return [n, d <= 2]
 }
