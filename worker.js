@@ -57,11 +57,11 @@ const mandelbrot = (c) => {
         totalY += z.y;
         avgY = totalY / n;
         
-        var jump = (avgX-z.x)*(avgX-z.x) + (avgY-z.y)*(avgY-z.y) < 1/3 * (tempZ.x-avgX)*(tempZ.x-avgX) + (tempZ.y-avgY)*(tempZ.y-avgY);
+        var jump = (avgX-z.x)*(avgX-z.x) + (avgY-z.y)*(avgY-z.y) < 1/2 * (tempZ.x-avgX)*(tempZ.x-avgX) + (tempZ.y-avgY)*(tempZ.y-avgY);
         
         d = 0.5 * (Math.pow(z.x, 2) + Math.pow(z.y, 2))
         n += 1
-    } while (d <=2 && n < MAX_ITERATION && jump)
+    } while (d <= 2 && n < MAX_ITERATION && jump)
 
     return [n, d <= 2]
     
