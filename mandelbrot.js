@@ -6,8 +6,8 @@
 const canvas = document.getElementById('myCanvas')
 const ctx = canvas.getContext('2d')
 
-const WIDTH = 800
-const HEIGHT = 600
+const WIDTH = window.innerWidth;
+const HEIGHT = window.innerHeight;
 ctx.canvas.width = WIDTH
 ctx.canvas.height = HEIGHT
 
