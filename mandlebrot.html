@@ -13,10 +13,11 @@ var ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const ZOOM_FACTOR = 0.99;
+const ZOOM_FACTOR = 0.1;
 
 var realStart = -2;
 var realEnd = 0.47;
+var realDis = realEnd - realStart;
 var imaginaryStart = -1.12;
 var imaginaryEnd = 1.12;
 
@@ -111,15 +112,10 @@ canvas.addEventListener('dblclick', e => {
     const zfw = (canvas.width * ZOOM_FACTOR)
     const zfh = (canvas.height * ZOOM_FACTOR)
 
-    // realStart = getRelativePointR(e.pageX - canvas.offsetLeft - zfw, canvas.width);
-    // realEnd = getRelativePointR(e.pageX - canvas.offsetLeft + zfw, canvas.width);
-    // imaginaryStart = getRelativePointI(e.pageY - canvas.offsetTop - zfh, canvas.height);
-    // imaginaryEnd = getRelativePointI(e.pageY - canvas.offsetTop + zfh, canvas.height);
-
-    realStart = realStart + (i/canvas.width) * (realEnd - realStart);;
-    realEnd *= ZOOM_FACTOR;
-    imaginaryStart *= ZOOM_FACTOR;
-    imaginaryEnd *= ZOOM_FACTOR;
+    realStart = getRelativePointR(e.pageX - canvas.offsetLeft - zfw, canvas.width);
+    realEnd = getRelativePointR(e.pageX - canvas.offsetLeft + zfw, canvas.width);
+    imaginaryStart = getRelativePointI(e.pageY - canvas.offsetTop - zfh, canvas.height);
+    imaginaryEnd = getRelativePointI(e.pageY - canvas.offsetTop + zfh, canvas.height);
 
     i = 0;
     j = 0;
