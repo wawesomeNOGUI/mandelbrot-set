@@ -29,7 +29,15 @@ var realEnd = 2.47;
 var imaginaryStart = -2.12;
 var imaginaryEnd = 2.12;
 */
-var res = 0.5;
+
+// does overflow/underflow for negatives
+/*
+function clampTo255(g) {
+    return (g % 256 + 256) % 256
+}
+*/
+
+var res = 1;
 const maxIteration = 1000;
 var i = 0;
 var j = 0;
@@ -48,7 +56,9 @@ function drawMandlebrot() {
     }
 
     if(x*x + y*y >= 2*2) {
-        ctx.fillStyle = "#000000";
+        var c = iteration % 255; 
+        //console.log(c)
+        ctx.fillStyle = "rgb("+c%25*5+","+c%10+","+c+")";
         ctx.fillRect(i, j, res, res);
     } 
 
